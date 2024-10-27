@@ -9,7 +9,19 @@ import markdown from "@eslint/markdown"
 export default tseslint.config(
   { ignores: ['dist'] },
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    extends: [js.configs.recommended,
+      ...tseslint.configs.recommendedTypeChecked,
+      {
+        languageOptions: {
+          parserOptions: {
+            projectService: {
+              allowDefaultProject: ['vitest.config.ts'],
+            },
+            tsconfigRootDir: import.meta.dirname,
+          },
+        },
+      },
+    ],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
