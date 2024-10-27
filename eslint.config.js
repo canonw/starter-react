@@ -6,6 +6,7 @@ import tseslint from 'typescript-eslint'
 import json from '@eslint/json'
 import markdown from "@eslint/markdown"
 import react from 'eslint-plugin-react'
+import noLoops from 'eslint-plugin-no-loops'
 
 export default tseslint.config(
   { ignores: ['dist'] },
@@ -30,11 +31,13 @@ export default tseslint.config(
     },
     settings: { react: { version: '18.3' } },
     plugins: {
+      'no-loops': noLoops,
       react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
     },
     rules: {
+      'no-loops/no-loops': 'error',
       ...react.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
