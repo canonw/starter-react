@@ -3,6 +3,7 @@ import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
+import json from '@eslint/json'
 
 export default tseslint.config(
   { ignores: ['dist'] },
@@ -25,4 +26,20 @@ export default tseslint.config(
       ],
     },
   },
+  {
+    files: ['**/*.json'],
+    ignores: ['*package-lock.json'],
+    language: 'json/json',
+    ...json.configs.recommended,
+  },
+  {
+    files: ['**/*.jsonc', '**/tsconfig?(*).json', '.vscode/*.json'],
+    language: 'json/jsonc',
+    ...json.configs.recommended,
+  },
+  {
+    files: ['**/*.json5'],
+    language: 'json/json5',
+    ...json.configs.recommended,
+  }
 )
