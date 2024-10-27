@@ -4,6 +4,7 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 import json from '@eslint/json'
+import markdown from "@eslint/markdown"
 
 export default tseslint.config(
   { ignores: ['dist'] },
@@ -41,5 +42,6 @@ export default tseslint.config(
     files: ['**/*.json5'],
     language: 'json/json5',
     ...json.configs.recommended,
-  }
+  },
+  ...markdown.configs.recommended,
 )
