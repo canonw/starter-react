@@ -8,6 +8,7 @@ import markdown from "@eslint/markdown"
 import react from 'eslint-plugin-react'
 import noLoops from 'eslint-plugin-no-loops'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
+import jsxA11y from 'eslint-plugin-jsx-a11y'
 
 export default tseslint.config(
   { ignores: ['dist'] },
@@ -64,6 +65,7 @@ export default tseslint.config(
     language: 'json/json5',
     ...json.configs.recommended,
   },
+  jsxA11y.flatConfigs.recommended,
   ...markdown.configs.recommended,
   eslintPluginPrettierRecommended,
 )
