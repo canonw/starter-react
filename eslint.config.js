@@ -1,20 +1,21 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
-import json from '@eslint/json'
-import markdown from "@eslint/markdown"
-import react from 'eslint-plugin-react'
-import noLoops from 'eslint-plugin-no-loops'
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
-import jsxA11y from 'eslint-plugin-jsx-a11y'
-import importPlugin from 'eslint-plugin-import'
+import js from '@eslint/js';
+import globals from 'globals';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import tseslint from 'typescript-eslint';
+import json from '@eslint/json';
+import markdown from '@eslint/markdown';
+import react from 'eslint-plugin-react';
+import noLoops from 'eslint-plugin-no-loops';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
+import importPlugin from 'eslint-plugin-import';
 
 export default tseslint.config(
   { ignores: ['dist'] },
   {
-    extends: [js.configs.recommended,
+    extends: [
+      js.configs.recommended,
       ...tseslint.configs.recommendedTypeChecked,
       {
         languageOptions: {
@@ -57,18 +58,21 @@ export default tseslint.config(
       ...react.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
-      'import/no-unresolved': [
-        'error',
-        {
-          ignore: ['.svg'],
-        },
-      ],      'import/default': 'off',
+      'import/no-unresolved': ['error', { ignore: ['\\.svg'] }],
+      'import/default': 'off',
       'import/no-named-as-default': 'off',
       'import/no-named-as-default-member': 'off',
       'import/order': [
         'error',
         {
-          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+          ],
           'newlines-between': 'always',
           alphabetize: { order: 'asc', caseInsensitive: true },
         },
@@ -104,4 +108,4 @@ export default tseslint.config(
   jsxA11y.flatConfigs.recommended,
   ...markdown.configs.recommended,
   eslintPluginPrettierRecommended,
-)
+);
