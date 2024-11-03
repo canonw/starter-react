@@ -10,6 +10,7 @@ import noLoops from 'eslint-plugin-no-loops';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import importPlugin from 'eslint-plugin-import';
+import typescript from '@typescript-eslint/eslint-plugin';
 
 export default tseslint.config(
   { ignores: ['dist'] },
@@ -53,6 +54,7 @@ export default tseslint.config(
       'react-refresh': reactRefresh,
     },
     rules: {
+      ...typescript.configs.recommended.rules,
       'no-loops/no-loops': 'error',
       ...importPlugin.configs.recommended.rules,
       ...react.configs.recommended.rules,
