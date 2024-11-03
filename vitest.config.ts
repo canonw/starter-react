@@ -8,6 +8,10 @@ export default mergeConfig(
   defineConfig({
     test: {
       globals: true,
+      coverage: {
+        provider: 'v8',
+        reporter: ['text', 'json', 'html'],
+      },
       environment: 'jsdom',
       setupFiles: './tests/vitest.setup.ts',
       include: ['**/*.test.tsx'],
