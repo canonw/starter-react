@@ -47,6 +47,7 @@ export default tseslint.config(
       },
     },
     plugins: {
+      'jsx-a11y': jsxA11y,
       import: importPlugin,
       'no-loops': noLoops,
       react,
@@ -60,6 +61,7 @@ export default tseslint.config(
       ...react.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
+      ...jsxA11y.configs.recommended.rules,
       'import/no-unresolved': ['error', { ignore: ['\\.svg'] }],
       'import/default': 'off',
       'import/no-named-as-default': 'off',
@@ -85,6 +87,13 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      'jsx-a11y/anchor-is-valid': [
+        'error',
+        {
+          components: ['Link'],
+          specialLink: ['to'],
+        },
+      ],
     },
   },
   {
@@ -109,7 +118,6 @@ export default tseslint.config(
     language: 'json/json5',
     ...json.configs.recommended,
   },
-  jsxA11y.flatConfigs.recommended,
   ...markdown.configs.recommended,
   eslintPluginPrettierRecommended,
 );
