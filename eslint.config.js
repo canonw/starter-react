@@ -9,6 +9,7 @@ import react from 'eslint-plugin-react'
 import noLoops from 'eslint-plugin-no-loops'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
+import importPlugin from 'eslint-plugin-import'
 
 export default tseslint.config(
   { ignores: ['dist'] },
@@ -31,8 +32,20 @@ export default tseslint.config(
       ecmaVersion: 2020,
       globals: globals.browser,
     },
-    settings: { react: { version: '18.3' } },
+    settings: {
+      react: { version: '18.3' },
+      'import/parsers': {
+        '@typescript-eslint/parser': ['.ts', '.tsx'],
+      },
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.json',
+        },
+      },
+    },
     plugins: {
+      import: importPlugin,
       'no-loops': noLoops,
       react,
       'react-hooks': reactHooks,
@@ -40,13 +53,36 @@ export default tseslint.config(
     },
     rules: {
       'no-loops/no-loops': 'error',
+      ...importPlugin.configs.recommended.rules,
       ...react.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
+      'import/no-unresolved': [
+        'error',
+        {
+          ignore: ['.svg'],
+        },
+      ],      'import/default': 'off',
+      'import/no-named-as-default': 'off',
+      'import/no-named-as-default-member': 'off',
+      'import/order': [
+        'error',
+        {
+          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+          'newlines-between': 'always',
+          alphabetize: { order: 'asc', caseInsensitive: true },
+        },
+      ],
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
       ],
+    },
+  },
+  {
+    files: ['*.config.ts', 'vite.config.ts'],
+    rules: {
+      'import/no-extraneous-dependencies': 'off',
     },
   },
   {
