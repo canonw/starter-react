@@ -17,7 +17,7 @@ import vitestPlugin from 'eslint-plugin-vitest';
 import testingLibrary from 'eslint-plugin-testing-library';
 
 export default tseslint.config(
-  { ignores: ['dist'] },
+  { ignores: ['**/dist/**', '**/node_modules/**', '**/coverage/**'] },
   {
     extends: [
       js.configs.recommended,
