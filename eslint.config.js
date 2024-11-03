@@ -11,6 +11,7 @@ import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import importPlugin from 'eslint-plugin-import';
 import typescript from '@typescript-eslint/eslint-plugin';
+import typescriptParser from '@typescript-eslint/parser';
 
 export default tseslint.config(
   { ignores: ['dist'] },
@@ -29,6 +30,14 @@ export default tseslint.config(
         },
       },
     ],
+    languageOptions: {
+      parser: typescriptParser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        project: './tsconfig.json',
+      },
+    },
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
