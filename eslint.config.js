@@ -13,6 +13,7 @@ import importPlugin from 'eslint-plugin-import';
 import typescript from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 import vitestPlugin from 'eslint-plugin-vitest';
+import testingLibrary from 'eslint-plugin-testing-library';
 
 export default tseslint.config(
   { ignores: ['dist'] },
@@ -63,6 +64,7 @@ export default tseslint.config(
       react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      'testing-library': testingLibrary,
       vitest: vitestPlugin,
     },
     rules: {
@@ -73,6 +75,7 @@ export default tseslint.config(
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
       ...vitestPlugin.configs.recommended.rules,
+      ...testingLibrary.configs.react.rules,
       ...jsxA11y.configs.recommended.rules,
       'import/no-unresolved': ['error', { ignore: ['\\.svg'] }],
       'import/default': 'off',
@@ -115,6 +118,10 @@ export default tseslint.config(
       'vitest/expect-expect': 'error',
       'vitest/no-disabled-tests': 'warn',
       'vitest/no-focused-tests': 'error',
+      'testing-library/await-async-queries': 'error',
+      'testing-library/no-await-sync-queries': 'error',
+      'testing-library/no-debugging-utils': 'warn',
+      'testing-library/no-dom-import': 'off',
     },
   },
   {
