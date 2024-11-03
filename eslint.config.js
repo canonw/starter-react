@@ -35,7 +35,7 @@ export default tseslint.config(
       globals: globals.browser,
     },
     settings: {
-      react: { version: '18.3' },
+      react: { version: 'detect' },
       'import/parsers': {
         '@typescript-eslint/parser': ['.ts', '.tsx'],
       },
@@ -79,6 +79,8 @@ export default tseslint.config(
           alphabetize: { order: 'asc', caseInsensitive: true },
         },
       ],
+      'react/react-in-jsx-scope': 'off',
+      'react/jsx-uses-react': 'off',
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
