@@ -1,3 +1,4 @@
+import { fixupPluginRules } from '@eslint/compat';
 import js from '@eslint/js';
 import globals from 'globals';
 import reactHooks from 'eslint-plugin-react-hooks';
@@ -58,14 +59,14 @@ export default tseslint.config(
       },
     },
     plugins: {
-      'jsx-a11y': jsxA11y,
-      import: importPlugin,
-      'no-loops': noLoops,
-      react,
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
-      'testing-library': testingLibrary,
-      vitest: vitestPlugin,
+      'jsx-a11y': fixupPluginRules(jsxA11y),
+      import: fixupPluginRules(importPlugin),
+      'no-loops': fixupPluginRules(noLoops),
+      react: fixupPluginRules(react),
+      'react-hooks': fixupPluginRules(reactHooks),
+      'react-refresh': fixupPluginRules(reactRefresh),
+      'testing-library': fixupPluginRules(testingLibrary),
+      vitest: fixupPluginRules(vitestPlugin),
     },
     rules: {
       ...typescript.configs.recommended.rules,
