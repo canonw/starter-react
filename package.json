@@ -12,13 +12,16 @@
     "test": "vitest run",
     "format": "prettier --ignore-unknown --write .",
     "coverage": "vitest run --coverage",
-    "prepare": "husky"
+    "prepare": "husky",
+    "commitlint": "commitlint --edit"
   },
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
     "@eslint/compat": "^1.2.2",
     "@eslint/js": "^9.14.0",
     "@eslint/json": "^0.6.0",
