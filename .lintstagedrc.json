@@ -1,0 +1,6 @@
+{
+  "**/*.{js,ts,tsx}": ["eslint --fix", "prettier --write"],
+  "**/*.html": ["eslint --fix", "prettier --write"],
+  "**/package.json": ["sort-package-json", "prettier --write"],
+  "**/*.{json,md}": ["eslint --fix", "prettier --write"]
+}
